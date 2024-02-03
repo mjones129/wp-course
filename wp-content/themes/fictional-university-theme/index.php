@@ -1,8 +1,7 @@
 <?
-$names = ['Brad', 'John', 'Jane', 'Meowsalot', 'Barksalot'];
-$count = 0;
-
-while($count < count($names)) {
-  echo "<li>Hi my name is $names[$count]</li>";
-  $count++;
-}
+while(have_posts()) {
+  the_post(); ?>
+  <h2><a href="<? the_permalink(); ?>"><? the_title(); ?></a></h2>
+  <? the_content(); ?>
+  <hr>
+<? }
