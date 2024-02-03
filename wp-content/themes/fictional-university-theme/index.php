@@ -1,10 +1,8 @@
 <?
-function greet($name, $color) {
-  echo "<p>Hi, my name is $name and my favorite color is $color.</p>";
-}
+$names = ['Brad', 'John', 'Jane', 'Meowsalot', 'Barksalot'];
+$count = 0;
 
-greet('John', 'green');
-greet('Jane', 'blue');
-?>
-  <h1><? bloginfo('name'); ?></h1>
-  <h1><? bloginfo('description'); ?></h1>
+while($count < count($names)) {
+  echo "<li>Hi my name is $names[$count]</li>";
+  $count++;
+}
