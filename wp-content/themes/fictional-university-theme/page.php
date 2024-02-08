@@ -21,16 +21,30 @@ $theParent = wp_get_post_parent_ID(get_the_ID());
         </p>
       </div>
 <? } ?>
+<? $testArray = get_pages([
+  'child_of' => get_the_ID()
+]);
 
-<!--
+  if($theParent || $testArray) { ?>
+
       <div class="page-links">
-        <h2 class="page-links__title"><a href="#">About Us</a></h2>
+      <h2 class="page-links__title"><a href="<? echo get_permalink($theParent); ?>"><? echo get_the_title($theParent); ?></a></h2>
         <ul class="min-list">
-          <li class="current_page_item"><a href="#">Our History</a></li>
-          <li><a href="#">Our Goals</a></li>
+<?
+   if ($theParent) {
+     $findChildrenOf = $theParent;
+   } else {
+     $findChildrenOf = get_the_ID();
+   }
+   wp_list_pages([
+            'title_li' => null,
+            'child_of' => $findChildrenOf,
+            'sort_column' => 'menu_order'
+          ]); ?>
         </ul>
       </div>
--->
+<? } ?>
+
       <div class="generic-content">
         <? the_content(); ?>
       </div>
